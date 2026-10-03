@@ -25,8 +25,15 @@ https://drive.google.com/drive/folders/1WCgR7ugUC_VjKzU-36cxLQN-WfbN2n-q
 
 ```powershell
 dvc remote list
-dvc push --all-branches --all-tags
+dvc push
 ```
+
+The main branch points to the replacement folder and its data cache has been
+verified in sync. Use `dvc push` for the current branch. Some historical commits
+from the simulated exercises still contain the old folder URL, so a blanket
+`dvc push --all-branches --all-tags` may contact that previous account. The v1,
+teammate-sim, and centered-normalization objects were separately pushed to the
+replacement folder using its URL and verified there.
 
 Each person authenticates with their own Google account. Never commit cached
 OAuth tokens, a service account key, or `.dvc/config.local`. If the default DVC
@@ -45,9 +52,10 @@ python connect_drive.py "C:\path\to\client_secret.json"
 In Google Cloud, enable the Google Drive API. Create/configure the OAuth consent
 screen and add your Google account as a test user if the app is in Testing mode.
 Create an OAuth client of type Desktop app and download its JSON. Authenticate
-with the account that owns the assignment Drive folder. Once upload succeeds,
-open that folder in Drive, capture the stored objects, and update the report's
-pending remote status. Share the folder with the instructor's Google account.
+with the account that owns the assignment Drive folder. The completed upload was
+verified with `dvc status --cloud` and a read-only inventory of the Drive folder.
+For the rubric's browser screenshot, open the folder and capture its contents.
+Share the folder with the instructor's Google account.
 
 ## History and evidence
 

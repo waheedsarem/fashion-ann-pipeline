@@ -1,5 +1,5 @@
 {
   "github_url": "https://github.com/waheedsarem/fashion-ann-pipeline",
   "github_status": "Public repository with full unsquashed history, branches and version tags.",
-  "drive_status": "The DVC remote was updated to the replacement folder. Upload is not complete: Google returned access_denied because the configured OAuth project is in Testing mode and waheedsarem@gmail.com is not an approved test user. Add that account under Google Auth Platform > Audience > Test users, authenticate again, run dvc push --all-branches --all-tags, and verify stored objects in Drive. All versions remain in the local DVC cache."
+  "drive_status": "Google OAuth succeeded after waheedsarem@gmail.com was added as a tester to project sonorous-haven-510508-a0. The v1, v2, teammate-sim and centered-normalization DVC artifacts were pushed to the replacement folder. DVC cloud status reports the current cache and remote in sync. A read-only Drive API inventory confirmed 21 folders and 20 files, including 12 hash-named DVC objects and 178413292 reported bytes. The browser UI screenshot requested by the assignment remains unprovided because no browser window was available to the computer-use tool."
 }

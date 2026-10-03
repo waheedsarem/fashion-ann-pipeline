@@ -34,12 +34,11 @@ Full captured command outputs are under [evidence/](evidence/).
 
 The default DVC remote points to the updated
 [assignment folder](https://drive.google.com/drive/folders/1WCgR7ugUC_VjKzU-36cxLQN-WfbN2n-q).
-Google currently blocks the configured OAuth app because it is in Testing mode
-and the account is not listed as a test user. The project owner must add
-`waheedsarem@gmail.com` under Google Auth Platform > Audience > Test users in
-OAuth project `sonorous-haven-510508-a0`. Sign in again after the change, then run
-`dvc push --all-branches --all-tags`. All artifact versions remain in the local
-DVC cache until that upload succeeds.
+Google OAuth was completed after adding the account as a tester for project
+`sonorous-haven-510508-a0`. The v1, v2, and both simulated preprocessing variants
+were pushed to the replacement folder. DVC reports the current cache and remote
+in sync. A Drive API inventory confirmed 21 folders and 20 files, including 12
+hash-named DVC objects (178,413,292 reported bytes).
 
 ## Pipeline
 
