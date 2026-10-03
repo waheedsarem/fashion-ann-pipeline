@@ -1,0 +1,226 @@
+$ dvc init
+ERROR: unexpected error - cannot import name '_DIR_MARK' from 'pathspec.patterns.gitwildmatch' (D:\Semester\Semester 7\MLOps\Assignment 1\.venv\Lib\site-packages\pathspec\patterns\gitwildmatch.py)
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+[exit 255]
+
+$ dvc init
+ERROR: failed to initiate DVC - '.dvc' exists. Use `-f` to force.
+[exit 1]
+
+$ dvc init -f
+ERROR: unexpected error - D:/Semester/Semester 7/MLOps/Assignment 1/fashion-ann-pipeline/.git/: repository path 'D:/Semester/Semester 7/MLOps/Assignment 1/fashion-ann-pipeline' is not owned by current user
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+[exit 255]
+
+$ dvc init -f
+Initialized DVC repository.
+
+You can now commit the changes to git.
+
+What's next?
+------------
+- Check out the documentation: <https://dvc.org/doc>
+- Get help and share ideas: <https://dvc.org/chat>
+- Star us on GitHub: <https://github.com/iterative/dvc>
+[exit 0]
+
+$ dvc remote add -d gdrive_storage gdrive://1CyzpWYpPv1X9WWP3KqPLF5u6l7nkH6be
+Setting 'gdrive_storage' as a default remote.
+[exit 0]
+
+$ dvc remote modify --local gdrive_storage gdrive_user_credentials_file D:\Semester\Semester 7\MLOps\Assignment 1\.secrets\drive-user.json
+[exit 0]
+
+$ git add .dvc .dvcignore
+[exit 0]
+
+$ git commit -m Initialize DVC on dev and configure Google Drive remote
+[dev 335e641] Initialize DVC on dev and configure Google Drive remote
+ 3 files changed, 8 insertions(+)
+ create mode 100644 .dvc/.gitignore
+ create mode 100644 .dvc/config
+ create mode 100644 .dvcignore
+[exit 0]
+
+$ python src/prepare.py
+Traceback (most recent call last):
+  File "D:\Semester\Semester 7\MLOps\Assignment 1\fashion-ann-pipeline\src\prepare.py", line 4, in <module>
+    from tensorflow import keras
+ModuleNotFoundError: No module named 'tensorflow'
+[exit 1]
+
+$ git add requirements.txt
+[exit 0]
+
+$ git commit -m Pin compatible DVC dependencies after environment validation
+[dev e7f1c81] Pin compatible DVC dependencies after environment validation
+ 1 file changed, 4 insertions(+)
+[exit 0]
+
+$ python src/prepare.py
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+
+$ python src/prepare.py
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+
+[1m       0/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m0s[0m 0s/step
+[1m   16384/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m3:37[0m 8us/step
+[1m   32768/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m2:58[0m 7us/step
+[1m   49152/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m3:18[0m 8us/step
+[1m   81920/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m3:11[0m 7us/step
+[1m  114688/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m2:31[0m 6us/step
+[1m  147456/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m2:13[0m 5us/step
+[1m  180224/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:58[0m 5us/step
+[1m  212992/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:48[0m 4us/step
+[1m  245760/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:43[0m 4us/step
+[1m  344064/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:17[0m 3us/step
+[1m  409600/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:08[0m 3us/step
+[1m  475136/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m1:02[0m 2us/step
+[1m  565248/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m54s[0m 2us/step 
+[1m  671744/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m47s[0m 2us/step
+[1m  802816/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m41s[0m 2us/step
+[1m  942080/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m36s[0m 1us/step
+[1m 1114112/26421880[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m31s[0m 1us/step
+[1m 1343488/26421880[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m27s[0m 1us/step
+[1m 1605632/26421880[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m23s[0m 1us/step
+[1m 1900544/26421880[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m20s[0m 1us/step
+[1m 2285568/26421880[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m16s[0m 1us/step
+[1m 2564096/26421880[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m15s[0m 1us/step
+[1m 3153920/26421880[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m12s[0m 1us/step
+[1m 3719168/26421880[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m10s[0m 0us/step
+[1m 4292608/26421880[0m [32m━━━[0m[37m━━━━━━━━━━━━━━━━━[0m [1m9s[0m 0us/step 
+[1m 4866048/26421880[0m [32m━━━[0m[37m━━━━━━━━━━━━━━━━━[0m [1m8s[0m 0us/step
+[1m 5439488/26421880[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m7s[0m 0us/step
+[1m 6012928/26421880[0m [32m━━━━[0m[37m━━━━━━━━━━━━━━━━[0m [1m6s[0m 0us/step
+[1m 6619136/26421880[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m6s[0m 0us/step
+[1m 6717440/26421880[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m6s[0m 0us/step
+[1m 7929856/26421880[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m5s[0m 0us/step
+[1m 8536064/26421880[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m4s[0m 0us/step
+[1m 9142272/26421880[0m [32m━━━━━━[0m[37m━━━━━━━━━━━━━━[0m [1m4s[0m 0us/step
+[1m10190848/26421880[0m [32m━━━━━━━[0m[37m━━━━━━━━━━━━━[0m [1m3s[0m 0us/step
+[1m10764288/26421880[0m [32m━━━━━━━━[0m[37m━━━━━━━━━━━━[0m [1m3s[0m 0us/step
+[1m10993664/26421880[0m [32m━━━━━━━━[0m[37m━━━━━━━━━━━━[0m [1m3s[0m 0us/step
+[1m12058624/26421880[0m [32m━━━━━━━━━[0m[37m━━━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m12673024/26421880[0m [32m━━━━━━━━━[0m[37m━━━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m13254656/26421880[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m13844480/26421880[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m14434304/26421880[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m14909440/26421880[0m [32m━━━━━━━━━━━[0m[37m━━━━━━━━━[0m [1m2s[0m 0us/step
+[1m15974400/26421880[0m [32m━━━━━━━━━━━━[0m[37m━━━━━━━━[0m [1m1s[0m 0us/step
+[1m16564224/26421880[0m [32m━━━━━━━━━━━━[0m[37m━━━━━━━━[0m [1m1s[0m 0us/step
+[1m17170432/26421880[0m [32m━━━━━━━━━━━━[0m[37m━━━━━━━━[0m [1m1s[0m 0us/step
+[1m17760256/26421880[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m1s[0m 0us/step
+[1m18055168/26421880[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m1s[0m 0us/step
+[1m19087360/26421880[0m [32m━━━━━━━━━━━━━━[0m[37m━━━━━━[0m [1m1s[0m 0us/step
+[1m19693568/26421880[0m [32m━━━━━━━━━━━━━━[0m[37m━━━━━━[0m [1m1s[0m 0us/step
+[1m19906560/26421880[0m [32m━━━━━━━━━━━━━━━[0m[37m━━━━━[0m [1m1s[0m 0us/step
+[1m20643840/26421880[0m [32m━━━━━━━━━━━━━━━[0m[37m━━━━━[0m [1m0s[0m 0us/step
+[1m21676032/26421880[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
+[1m22282240/26421880[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
+[1m22872064/26421880[0m [32m━━━━━━━━━━━━━━━━━[0m[37m━━━[0m [1m0s[0m 0us/step
+[1m23216128/26421880[0m [32m━━━━━━━━━━━━━━━━━[0m[37m━━━[0m [1m0s[0m 0us/step
+[1m24494080/26421880[0m [32m━━━━━━━━━━━━━━━━━━[0m[37m━━[0m [1m0s[0m 0us/step
+[1m25083904/26421880[0m [32m━━━━━━━━━━━━━━━━━━[0m[37m━━[0m [1m0s[0m 0us/step
+[1m25673728/26421880[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 0us/step
+[1m26263552/26421880[0m [32m━━━━━━━━━━━━━━━━━━━[0m[37m━[0m [1m0s[0m 0us/step
+[1m26421880/26421880[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m4s[0m 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
+
+[1m   0/5148[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m0s[0m 0s/step
+[1m5148/5148[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 0s/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
+
+[1m      0/4422102[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m0s[0m 0s/step
+[1m  40960/4422102[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m6s[0m 1us/step
+[1m 114688/4422102[0m [37m━━━━━━━━━━━━━━━━━━━━[0m [1m4s[0m 1us/step
+[1m 286720/4422102[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m2s[0m 1us/step
+[1m 622592/4422102[0m [32m━━[0m[37m━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 0us/step
+[1m1204224/4422102[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m0s[0m 0us/step
+[1m1794048/4422102[0m [32m━━━━━━━━[0m[37m━━━━━━━━━━━━[0m [1m0s[0m 0us/step
+[1m2400256/4422102[0m [32m━━━━━━━━━━[0m[37m━━━━━━━━━━[0m [1m0s[0m 0us/step
+[1m2990080/4422102[0m [32m━━━━━━━━━━━━━[0m[37m━━━━━━━[0m [1m0s[0m 0us/step
+[1m3563520/4422102[0m [32m━━━━━━━━━━━━━━━━[0m[37m━━━━[0m [1m0s[0m 0us/step
+[1m4161536/4422102[0m [32m━━━━━━━━━━━━━━━━━━[0m[37m━━[0m [1m0s[0m 0us/step
+[1m4422102/4422102[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 0us/step
+Saved 60000 training and 10000 test images.
+[exit 0]
+
+$ python src/preprocess.py
+Prepared train=48000, validation=12000, test=10000.
+[exit 0]
+
+$ python src/train.py
+Model: "sequential"
+┌─────────────────────────────────┬────────────────────────┬───────────────┐
+│ Layer (type)                    │ Output Shape           │       Param # │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 784)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 128)            │       100,480 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 128)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 10)             │         1,290 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 101,770 (397.54 KB)
+ Trainable params: 101,770 (397.54 KB)
+ Non-trainable params: 0 (0.00 B)
+Epoch 1/20
+2026-10-03 12:58:18.423512: E tensorflow/core/framework/node_def_util.cc:680] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+375/375 - 2s - 7ms/step - accuracy: 0.7829 - loss: 0.6292 - val_accuracy: 0.8428 - val_loss: 0.4411
+Epoch 2/20
+375/375 - 1s - 3ms/step - accuracy: 0.8436 - loss: 0.4434 - val_accuracy: 0.8618 - val_loss: 0.3822
+Epoch 3/20
+375/375 - 1s - 3ms/step - accuracy: 0.8577 - loss: 0.3966 - val_accuracy: 0.8715 - val_loss: 0.3628
+Epoch 4/20
+375/375 - 1s - 3ms/step - accuracy: 0.8665 - loss: 0.3693 - val_accuracy: 0.8767 - val_loss: 0.3456
+Epoch 5/20
+375/375 - 1s - 3ms/step - accuracy: 0.8738 - loss: 0.3494 - val_accuracy: 0.8801 - val_loss: 0.3339
+Epoch 6/20
+375/375 - 1s - 3ms/step - accuracy: 0.8766 - loss: 0.3377 - val_accuracy: 0.8805 - val_loss: 0.3307
+Epoch 7/20
+375/375 - 1s - 3ms/step - accuracy: 0.8816 - loss: 0.3238 - val_accuracy: 0.8813 - val_loss: 0.3323
+Epoch 8/20
+375/375 - 1s - 3ms/step - accuracy: 0.8858 - loss: 0.3135 - val_accuracy: 0.8838 - val_loss: 0.3243
+Epoch 9/20
+375/375 - 1s - 3ms/step - accuracy: 0.8895 - loss: 0.3018 - val_accuracy: 0.8872 - val_loss: 0.3180
+Epoch 10/20
+375/375 - 1s - 3ms/step - accuracy: 0.8916 - loss: 0.2972 - val_accuracy: 0.8882 - val_loss: 0.3110
+Epoch 11/20
+375/375 - 1s - 3ms/step - accuracy: 0.8944 - loss: 0.2880 - val_accuracy: 0.8888 - val_loss: 0.3086
+Epoch 12/20
+375/375 - 1s - 3ms/step - accuracy: 0.8965 - loss: 0.2815 - val_accuracy: 0.8906 - val_loss: 0.3081
+Epoch 13/20
+375/375 - 1s - 3ms/step - accuracy: 0.8970 - loss: 0.2724 - val_accuracy: 0.8886 - val_loss: 0.3086
+Epoch 14/20
+375/375 - 1s - 3ms/step - accuracy: 0.9001 - loss: 0.2684 - val_accuracy: 0.8920 - val_loss: 0.3055
+Epoch 15/20
+375/375 - 1s - 3ms/step - accuracy: 0.9026 - loss: 0.2620 - val_accuracy: 0.8941 - val_loss: 0.3000
+Epoch 16/20
+375/375 - 1s - 3ms/step - accuracy: 0.9035 - loss: 0.2577 - val_accuracy: 0.8957 - val_loss: 0.3009
+Epoch 17/20
+375/375 - 1s - 3ms/step - accuracy: 0.9051 - loss: 0.2527 - val_accuracy: 0.8928 - val_loss: 0.3083
+Epoch 18/20
+375/375 - 1s - 3ms/step - accuracy: 0.9077 - loss: 0.2471 - val_accuracy: 0.8947 - val_loss: 0.2951
+Epoch 19/20
+375/375 - 1s - 3ms/step - accuracy: 0.9086 - loss: 0.2426 - val_accuracy: 0.8966 - val_loss: 0.2984
+Epoch 20/20
+375/375 - 1s - 4ms/step - accuracy: 0.9111 - loss: 0.2368 - val_accuracy: 0.8947 - val_loss: 0.3027
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+[exit 0]
+
+$ python src/evaluate.py
+{
+  "test_loss": 0.337295800447464,
+  "test_accuracy": 0.8837,
+  "test_samples": 10000
+}
+
+[exit 0]
+
+$ dvc add data/raw data/processed models reports
+ERROR: Unable to acquire lock. Most likely another DVC process is running or was terminated abruptly. Check the page <https://dvc.org/doc/user-guide/troubleshooting#lock-issue> for other possible reasons and to learn how to resolve this.
+[exit 1]
+

@@ -1,0 +1,145 @@
+$ git checkout -b teammate-sim
+Switched to a new branch 'teammate-sim'
+[exit 0]
+
+$ python src/preprocess.py
+Prepared train=48000, validation=12000, test=10000.
+[exit 0]
+
+$ dvc add data/processed
+
+To track the changes with git, run:
+
+	git add 'data\processed.dvc'
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+[exit 0]
+
+$ git add src/preprocess.py data/processed.dvc
+[exit 0]
+
+$ git commit -m Teammate uses float64 normalization and regenerates data
+[teammate-sim 8aec6d5] Teammate uses float64 normalization and regenerates data
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+[exit 0]
+
+$ git checkout main
+Switched to branch 'main'
+[exit 0]
+
+$ dvc checkout
+M       data\processed\
+[exit 0]
+
+$ python src/preprocess.py
+Prepared train=48000, validation=12000, test=10000.
+[exit 0]
+
+$ dvc add data/processed
+
+To track the changes with git, run:
+
+	git add 'data\processed.dvc'
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+[exit 0]
+
+$ git add src/preprocess.py data/processed.dvc
+[exit 0]
+
+$ git commit -m Main tries centered normalization and regenerates data
+[main 2e41775] Main tries centered normalization and regenerates data
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+[exit 0]
+
+$ git merge teammate-sim
+Auto-merging data/processed.dvc
+CONFLICT (content): Merge conflict in data/processed.dvc
+Auto-merging src/preprocess.py
+CONFLICT (content): Merge conflict in src/preprocess.py
+Automatic merge failed; fix conflicts and then commit the result.
+[exit 1]
+
+$ git status --short
+UU data/processed.dvc
+UU src/preprocess.py
+?? README_SETUP.md
+?? requirements-lock.txt
+?? setup.ps1
+?? verify_pipeline.py
+[exit 0]
+
+$ git diff --cc
+diff --cc data/processed.dvc
+index eb8f34e,72907e7..0000000
+--- a/data/processed.dvc
++++ b/data/processed.dvc
+@@@ -1,6 -1,6 +1,11 @@@
+  outs:
+++<<<<<<< HEAD
+ +- md5: bcf5d68187d28f74ec911362d581f6e5.dir
+ +  size: 47446101
+++=======
++ - md5: 587def07d8f546a8cc229ad88c0cad07.dir
++   size: 50778235
+++>>>>>>> teammate-sim
+    nfiles: 1
+    hash: md5
+    path: processed
+diff --cc src/preprocess.py
+index 22b569d,261a3af..0000000
+--- a/src/preprocess.py
++++ b/src/preprocess.py
+@@@ -6,7 -6,7 +6,11 @@@ from sklearn.model_selection import tra
+  
+  
+  def normalize(images):
+++<<<<<<< HEAD
+ +    return (images.astype(np.float32) / 127.5) - 1.0
+++=======
++     return images.astype(np.float64) / 255.0
+++>>>>>>> teammate-sim
+  
+  
+  def main():
+[exit 0]
+
+$ git restore --source=v1 --worktree data/processed.dvc
+[exit 0]
+
+$ python src/preprocess.py
+Prepared train=48000, validation=12000, test=10000.
+[exit 0]
+
+$ dvc add data/processed
+
+To track the changes with git, run:
+
+	git add 'data\processed.dvc'
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+[exit 0]
+
+$ dvc checkout
+[exit 0]
+
+$ dvc status
+Data and pipelines are up to date.
+[exit 0]
+
+$ git add src/preprocess.py data/processed.dvc
+[exit 0]
+
+$ git commit -m Resolve code and data conflicts with clipped unit-range float32 normalization
+[main 37c48fe] Resolve code and data conflicts with clipped unit-range float32 normalization
+[exit 0]
+
+$ git tag conflict-resolved
+[exit 0]
+

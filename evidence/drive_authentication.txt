@@ -1,0 +1,16 @@
+Google Drive authentication attempt
+
+Command actually executed:
+dvc push data/raw.dvc
+
+DVC opened Google's OAuth consent URL and waited for a localhost callback.
+The account owner reported: "app is blocked".
+Authentication did not complete, and no successful Drive upload is claimed.
+The waiting DVC process was stopped to release its repository lock.
+
+Required recovery: configure a personal Google Cloud Desktop OAuth client
+with the Google Drive API enabled, authenticate, then run:
+dvc push --all-branches --all-tags
+
+Official documentation confirms the default DVC Google app can be blocked:
+https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive

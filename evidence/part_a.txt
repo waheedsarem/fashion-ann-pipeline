@@ -1,0 +1,856 @@
+$ git config core.autocrlf false
+
+$ git add params.yaml requirements.txt
+
+$ git commit -m Define reproducible hyperparameters and environment requirements
+[dev 696c319] Define reproducible hyperparameters and environment requirements
+ 2 files changed, 15 insertions(+)
+ create mode 100644 params.yaml
+ create mode 100644 requirements.txt
+
+$ git add prepare.py
+
+$ git commit -m Implement official Fashion-MNIST data download
+[dev 42a6343] Implement official Fashion-MNIST data download
+ 1 file changed, 17 insertions(+)
+ create mode 100644 prepare.py
+
+$ git add preprocess.py
+
+$ git commit -m Implement normalization and stratified validation split
+[dev e22bbe5] Implement normalization and stratified validation split
+ 1 file changed, 29 insertions(+)
+ create mode 100644 preprocess.py
+
+$ git add train.py
+
+$ git commit -m Implement configurable TensorFlow ANN training and history
+[dev 8a96655] Implement configurable TensorFlow ANN training and history
+ 1 file changed, 43 insertions(+)
+ create mode 100644 train.py
+
+$ git add evaluate.py
+
+$ git commit -m Implement test metrics and confusion matrix evaluation
+[dev 7e46a0b] Implement test metrics and confusion matrix evaluation
+ 1 file changed, 44 insertions(+)
+ create mode 100644 evaluate.py
+
+$ git add scratch.txt
+
+$ git commit -m Add temporary scratch file for repository exercise
+[dev 1fe31cb] Add temporary scratch file for repository exercise
+ 1 file changed, 1 insertion(+)
+ create mode 100644 scratch.txt
+
+$ git mv prepare.py src/prepare.py
+
+$ git mv preprocess.py src/preprocess.py
+
+$ git mv train.py src/train.py
+
+$ git mv evaluate.py src/evaluate.py
+
+$ git commit -m Reorganize independent pipeline scripts with git mv
+[dev 615df0e] Reorganize independent pipeline scripts with git mv
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ rename evaluate.py => src/evaluate.py (100%)
+ rename prepare.py => src/prepare.py (100%)
+ rename preprocess.py => src/preprocess.py (100%)
+ rename train.py => src/train.py (100%)
+
+$ git rm scratch.txt
+rm 'scratch.txt'
+
+$ git commit -m Remove obsolete scratch file with git rm
+[dev f62cc99] Remove obsolete scratch file with git rm
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 scratch.txt
+
+$ git log --oneline --graph --all
+* f62cc99 Remove obsolete scratch file with git rm
+* 615df0e Reorganize independent pipeline scripts with git mv
+* 1fe31cb Add temporary scratch file for repository exercise
+* 7e46a0b Implement test metrics and confusion matrix evaluation
+* 8a96655 Implement configurable TensorFlow ANN training and history
+* e22bbe5 Implement normalization and stratified validation split
+* 42a6343 Implement official Fashion-MNIST data download
+* 696c319 Define reproducible hyperparameters and environment requirements
+* 7c539e1 Initialize project README and artifact credential ignores
+
+$ git log --stat -3
+commit f62cc99b61344d5b49d3f308acf08ef42b1a9ad6
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:03 2026 +0500
+
+    Remove obsolete scratch file with git rm
+
+ scratch.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 615df0e7d65343177237be1c30dcda047b531e92
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:03 2026 +0500
+
+    Reorganize independent pipeline scripts with git mv
+
+ evaluate.py => src/evaluate.py     | 0
+ prepare.py => src/prepare.py       | 0
+ preprocess.py => src/preprocess.py | 0
+ train.py => src/train.py           | 0
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 1fe31cbc78db446e13c038afb89bf707cf3b0139
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:02 2026 +0500
+
+    Add temporary scratch file for repository exercise
+
+ scratch.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+$ git log -p -1
+commit f62cc99b61344d5b49d3f308acf08ef42b1a9ad6
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:03 2026 +0500
+
+    Remove obsolete scratch file with git rm
+
+diff --git a/scratch.txt b/scratch.txt
+deleted file mode 100644
+index 82a5c89..0000000
+--- a/scratch.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Temporary scratch file for the git rm demonstration.
+
+$ git log main..dev
+commit f62cc99b61344d5b49d3f308acf08ef42b1a9ad6
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:03 2026 +0500
+
+    Remove obsolete scratch file with git rm
+
+commit 615df0e7d65343177237be1c30dcda047b531e92
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:03 2026 +0500
+
+    Reorganize independent pipeline scripts with git mv
+
+commit 1fe31cbc78db446e13c038afb89bf707cf3b0139
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:02 2026 +0500
+
+    Add temporary scratch file for repository exercise
+
+commit 7e46a0b61627b817b52b19c54e42d71cf7b14993
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:02 2026 +0500
+
+    Implement test metrics and confusion matrix evaluation
+
+commit 8a9665505c55018b775bd67aee42377a96c74b1d
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:02 2026 +0500
+
+    Implement configurable TensorFlow ANN training and history
+
+commit e22bbe591fcd32fc6cb64b96a73968b632f6c9d0
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:01 2026 +0500
+
+    Implement normalization and stratified validation split
+
+commit 42a63433cf0b7c7c3de6521b5f411a53798cf36e
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:01 2026 +0500
+
+    Implement official Fashion-MNIST data download
+
+commit 696c3196b9f8bb95c7f9dcf132d2d179cae6e93c
+Author: waheedsarem <153753764+waheedsarem@users.noreply.github.com>
+Date:   Sat Oct 3 12:44:01 2026 +0500
+
+    Define reproducible hyperparameters and environment requirements
+
+$ git diff
+diff --git a/src/preprocess.py b/src/preprocess.py
+index 180be01..9df2eed 100644
+--- a/src/preprocess.py
++++ b/src/preprocess.py
+@@ -1,29 +1,31 @@
+-"""Normalize images and make a stratified validation split."""
+-from pathlib import Path
+-import numpy as np
+-import yaml
+-from sklearn.model_selection import train_test_split
+-
+-
+-def normalize(images):
+-    return images.astype(np.float32) / 255.0
+-
+-
+-def main():
+-    with open("params.yaml", encoding="utf-8") as stream:
+-        params = yaml.safe_load(stream)["preprocess"]
+-    with np.load("data/raw/fashion_mnist.npz") as raw:
+-        x_train, x_val, y_train, y_val = train_test_split(
+-            normalize(raw["x_train"]), raw["y_train"],
+-            test_size=params["test_size"], random_state=params["seed"],
+-            stratify=raw["y_train"])
+-        output = Path("data/processed")
+-        output.mkdir(parents=True, exist_ok=True)
+-        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
+-                            y_train=y_train, x_val=x_val, y_val=y_val,
+-                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
+-    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
+-
+-
+-if __name__ == "__main__":
+-    main()
++"""Normalize images and make a stratified validation split."""
++from pathlib import Path
++import numpy as np
++import yaml
++from sklearn.model_selection import train_test_split
++
++
++def normalize(images):
++    return images.astype(np.float32) / 255.0
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["preprocess"]
++    with np.load("data/raw/fashion_mnist.npz") as raw:
++        x_train, x_val, y_train, y_val = train_test_split(
++            normalize(raw["x_train"]), raw["y_train"],
++            test_size=params["test_size"], random_state=params["seed"],
++            stratify=raw["y_train"])
++        output = Path("data/processed")
++        output.mkdir(parents=True, exist_ok=True)
++        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                            y_train=y_train, x_val=x_val, y_val=y_val,
++                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
++    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
++
++
++if __name__ == "__main__":
++    main()
++
++# Validation splitting is stratified to preserve class balance.
+
+$ git add src/preprocess.py
+
+$ git diff --staged
+diff --git a/src/preprocess.py b/src/preprocess.py
+index 180be01..9df2eed 100644
+--- a/src/preprocess.py
++++ b/src/preprocess.py
+@@ -1,29 +1,31 @@
+-"""Normalize images and make a stratified validation split."""
+-from pathlib import Path
+-import numpy as np
+-import yaml
+-from sklearn.model_selection import train_test_split
+-
+-
+-def normalize(images):
+-    return images.astype(np.float32) / 255.0
+-
+-
+-def main():
+-    with open("params.yaml", encoding="utf-8") as stream:
+-        params = yaml.safe_load(stream)["preprocess"]
+-    with np.load("data/raw/fashion_mnist.npz") as raw:
+-        x_train, x_val, y_train, y_val = train_test_split(
+-            normalize(raw["x_train"]), raw["y_train"],
+-            test_size=params["test_size"], random_state=params["seed"],
+-            stratify=raw["y_train"])
+-        output = Path("data/processed")
+-        output.mkdir(parents=True, exist_ok=True)
+-        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
+-                            y_train=y_train, x_val=x_val, y_val=y_val,
+-                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
+-    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
+-
+-
+-if __name__ == "__main__":
+-    main()
++"""Normalize images and make a stratified validation split."""
++from pathlib import Path
++import numpy as np
++import yaml
++from sklearn.model_selection import train_test_split
++
++
++def normalize(images):
++    return images.astype(np.float32) / 255.0
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["preprocess"]
++    with np.load("data/raw/fashion_mnist.npz") as raw:
++        x_train, x_val, y_train, y_val = train_test_split(
++            normalize(raw["x_train"]), raw["y_train"],
++            test_size=params["test_size"], random_state=params["seed"],
++            stratify=raw["y_train"])
++        output = Path("data/processed")
++        output.mkdir(parents=True, exist_ok=True)
++        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                            y_train=y_train, x_val=x_val, y_val=y_val,
++                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
++    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
++
++
++if __name__ == "__main__":
++    main()
++
++# Validation splitting is stratified to preserve class balance.
+
+$ git restore --staged src/preprocess.py
+
+$ git stash push -m Mid-edit preprocessing documentation
+Saved working directory and index state On dev: Mid-edit preprocessing documentation
+
+$ git stash list
+stash@{0}: On dev: Mid-edit preprocessing documentation
+
+$ git checkout main
+Switched to branch 'main'
+
+$ git show HEAD:README.md
+# Fashion MNIST ANN Pipeline
+
+Assignment 3: reproducible Fashion-MNIST classification with TensorFlow, Git and DVC.
+
+The project trains a fully connected ANN on Fashion-MNIST and versions data,
+models and evaluation outputs. Detailed setup and measured results will be added
+after executing the workflow.
+
+$ git checkout dev
+Switched to branch 'dev'
+
+$ git stash pop
+On branch dev
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/preprocess.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (8871efc589ef8184b3695da827534f19fccdf32b)
+
+$ git add src/preprocess.py
+
+$ git commit -m Clarify validation split after resuming stashed edit
+[dev 333e2d4] Clarify validation split after resuming stashed edit
+ 1 file changed, 31 insertions(+), 29 deletions(-)
+
+$ git checkout main
+Switched to branch 'main'
+
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+$ git add README.md
+
+$ git commit -m Correct Fashion-MNIST dataset spelling
+[hotfix 3c813c0] Correct Fashion-MNIST dataset spelling
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+$ git checkout main
+Switched to branch 'main'
+
+$ git merge --no-ff hotfix -m Merge README hotfix
+Merge made by the 'ort' strategy.
+ README.md | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+$ git diff main..dev
+diff --git a/README.md b/README.md
+index 351d60b..40f5d6c 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+-# Fashion-MNIST ANN Pipeline
+-
+-Assignment 3: reproducible Fashion-MNIST classification with TensorFlow, Git and DVC.
+-
+-The project trains a fully connected ANN on Fashion-MNIST and versions data,
+-models and evaluation outputs. Detailed setup and measured results will be added
+-after executing the workflow.
++# Fashion MNIST ANN Pipeline
++
++Assignment 3: reproducible Fashion-MNIST classification with TensorFlow, Git and DVC.
++
++The project trains a fully connected ANN on Fashion-MNIST and versions data,
++models and evaluation outputs. Detailed setup and measured results will be added
++after executing the workflow.
+diff --git a/params.yaml b/params.yaml
+new file mode 100644
+index 0000000..21fe1be
+--- /dev/null
++++ b/params.yaml
+@@ -0,0 +1,10 @@
++preprocess:
++  test_size: 0.2
++  seed: 42
++train:
++  seed: 42
++  dense_units: 128
++  dropout_rate: 0.2
++  learning_rate: 0.001
++  epochs: 20
++  batch_size: 128
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+index 0000000..bf031b8
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1,5 @@
++tensorflow==2.20.0
++dvc[gdrive]==3.63.0
++PyYAML==6.0.3
++scikit-learn==1.9.1
++matplotlib==3.11.2
+diff --git a/src/evaluate.py b/src/evaluate.py
+new file mode 100644
+index 0000000..4e65b9d
+--- /dev/null
++++ b/src/evaluate.py
+@@ -0,0 +1,44 @@
++"""Evaluate once on the untouched test set and save metrics and confusion matrix."""
++import os
++os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
++import json
++from pathlib import Path
++import matplotlib
++matplotlib.use("Agg")
++import matplotlib.pyplot as plt
++import numpy as np
++from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
++from tensorflow import keras
++
++LABELS = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", "Sandal",
++          "Shirt", "Sneaker", "Bag", "Ankle boot"]
++
++
++def main():
++    with np.load("data/processed/fashion_mnist.npz") as data:
++        x_test, y_test = data["x_test"], data["y_test"]
++    model = keras.models.load_model("models/model.h5", compile=False)
++    probabilities = model.predict(x_test, verbose=0)
++    predictions = probabilities.argmax(axis=1)
++    loss = keras.losses.sparse_categorical_crossentropy(y_test, probabilities)
++    metrics = {"test_loss": float(np.mean(loss)),
++               "test_accuracy": float(np.mean(predictions == y_test)),
++               "test_samples": int(len(y_test))}
++    encoded = json.dumps(metrics, indent=2) + "\n"
++    Path("metrics.json").write_text(encoded, encoding="utf-8")
++    Path("reports").mkdir(exist_ok=True)
++    # The cached copy satisfies remote versioning; root metrics stay Git-readable.
++    Path("reports/metrics.json").write_text(encoded, encoding="utf-8")
++    matrix = confusion_matrix(y_test, predictions, labels=np.arange(10))
++    fig, ax = plt.subplots(figsize=(10, 9))
++    ConfusionMatrixDisplay(matrix, display_labels=LABELS).plot(
++        ax=ax, cmap="Blues", xticks_rotation=45, colorbar=False)
++    ax.set_title("Fashion-MNIST test confusion matrix")
++    fig.tight_layout()
++    fig.savefig("reports/confusion_matrix.png", dpi=150)
++    plt.close(fig)
++    print(encoded)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/src/prepare.py b/src/prepare.py
+new file mode 100644
+index 0000000..14526d3
+--- /dev/null
++++ b/src/prepare.py
+@@ -0,0 +1,17 @@
++"""Download the official Fashion-MNIST train/test split."""
++from pathlib import Path
++import numpy as np
++from tensorflow import keras
++
++
++def main():
++    (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
++    output = Path("data/raw")
++    output.mkdir(parents=True, exist_ok=True)
++    np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                        y_train=y_train, x_test=x_test, y_test=y_test)
++    print(f"Saved {len(y_train)} training and {len(y_test)} test images.")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/src/preprocess.py b/src/preprocess.py
+new file mode 100644
+index 0000000..9df2eed
+--- /dev/null
++++ b/src/preprocess.py
+@@ -0,0 +1,31 @@
++"""Normalize images and make a stratified validation split."""
++from pathlib import Path
++import numpy as np
++import yaml
++from sklearn.model_selection import train_test_split
++
++
++def normalize(images):
++    return images.astype(np.float32) / 255.0
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["preprocess"]
++    with np.load("data/raw/fashion_mnist.npz") as raw:
++        x_train, x_val, y_train, y_val = train_test_split(
++            normalize(raw["x_train"]), raw["y_train"],
++            test_size=params["test_size"], random_state=params["seed"],
++            stratify=raw["y_train"])
++        output = Path("data/processed")
++        output.mkdir(parents=True, exist_ok=True)
++        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                            y_train=y_train, x_val=x_val, y_val=y_val,
++                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
++    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
++
++
++if __name__ == "__main__":
++    main()
++
++# Validation splitting is stratified to preserve class balance.
+diff --git a/src/train.py b/src/train.py
+new file mode 100644
+index 0000000..9b3c8e3
+--- /dev/null
++++ b/src/train.py
+@@ -0,0 +1,43 @@
++"""Train the parameterized fully connected ANN (no convolutions)."""
++import os
++os.environ.setdefault("TF_DETERMINISTIC_OPS", "1")
++os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
++import csv
++from pathlib import Path
++import numpy as np
++import tensorflow as tf
++import yaml
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["train"]
++    tf.keras.utils.set_random_seed(params["seed"])
++    tf.config.experimental.enable_op_determinism()
++    with np.load("data/processed/fashion_mnist.npz") as data:
++        x_train, y_train = data["x_train"], data["y_train"]
++        x_val, y_val = data["x_val"], data["y_val"]
++    model = tf.keras.Sequential([
++        tf.keras.layers.Input(shape=x_train.shape[1:]),
++        tf.keras.layers.Flatten(),
++        tf.keras.layers.Dense(params["dense_units"], activation="relu"),
++        tf.keras.layers.Dropout(params["dropout_rate"]),
++        tf.keras.layers.Dense(10, activation="softmax"),
++    ])
++    model.compile(optimizer=tf.keras.optimizers.Adam(params["learning_rate"]),
++                  loss="sparse_categorical_crossentropy", metrics=["accuracy"])
++    model.summary()
++    history = model.fit(x_train, y_train, validation_data=(x_val, y_val),
++                        epochs=params["epochs"], batch_size=params["batch_size"],
++                        verbose=2)
++    Path("models").mkdir(exist_ok=True)
++    model.save("models/model.h5")
++    with open("models/history.csv", "w", newline="", encoding="utf-8") as stream:
++        writer = csv.writer(stream)
++        writer.writerow(["epoch", *history.history])
++        for i in range(len(history.epoch)):
++            writer.writerow([i + 1, *(values[i] for values in history.history.values())])
++
++
++if __name__ == "__main__":
++    main()
+
+$ git diff main...dev
+diff --git a/params.yaml b/params.yaml
+new file mode 100644
+index 0000000..21fe1be
+--- /dev/null
++++ b/params.yaml
+@@ -0,0 +1,10 @@
++preprocess:
++  test_size: 0.2
++  seed: 42
++train:
++  seed: 42
++  dense_units: 128
++  dropout_rate: 0.2
++  learning_rate: 0.001
++  epochs: 20
++  batch_size: 128
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+index 0000000..bf031b8
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1,5 @@
++tensorflow==2.20.0
++dvc[gdrive]==3.63.0
++PyYAML==6.0.3
++scikit-learn==1.9.1
++matplotlib==3.11.2
+diff --git a/src/evaluate.py b/src/evaluate.py
+new file mode 100644
+index 0000000..4e65b9d
+--- /dev/null
++++ b/src/evaluate.py
+@@ -0,0 +1,44 @@
++"""Evaluate once on the untouched test set and save metrics and confusion matrix."""
++import os
++os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
++import json
++from pathlib import Path
++import matplotlib
++matplotlib.use("Agg")
++import matplotlib.pyplot as plt
++import numpy as np
++from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
++from tensorflow import keras
++
++LABELS = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", "Sandal",
++          "Shirt", "Sneaker", "Bag", "Ankle boot"]
++
++
++def main():
++    with np.load("data/processed/fashion_mnist.npz") as data:
++        x_test, y_test = data["x_test"], data["y_test"]
++    model = keras.models.load_model("models/model.h5", compile=False)
++    probabilities = model.predict(x_test, verbose=0)
++    predictions = probabilities.argmax(axis=1)
++    loss = keras.losses.sparse_categorical_crossentropy(y_test, probabilities)
++    metrics = {"test_loss": float(np.mean(loss)),
++               "test_accuracy": float(np.mean(predictions == y_test)),
++               "test_samples": int(len(y_test))}
++    encoded = json.dumps(metrics, indent=2) + "\n"
++    Path("metrics.json").write_text(encoded, encoding="utf-8")
++    Path("reports").mkdir(exist_ok=True)
++    # The cached copy satisfies remote versioning; root metrics stay Git-readable.
++    Path("reports/metrics.json").write_text(encoded, encoding="utf-8")
++    matrix = confusion_matrix(y_test, predictions, labels=np.arange(10))
++    fig, ax = plt.subplots(figsize=(10, 9))
++    ConfusionMatrixDisplay(matrix, display_labels=LABELS).plot(
++        ax=ax, cmap="Blues", xticks_rotation=45, colorbar=False)
++    ax.set_title("Fashion-MNIST test confusion matrix")
++    fig.tight_layout()
++    fig.savefig("reports/confusion_matrix.png", dpi=150)
++    plt.close(fig)
++    print(encoded)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/src/prepare.py b/src/prepare.py
+new file mode 100644
+index 0000000..14526d3
+--- /dev/null
++++ b/src/prepare.py
+@@ -0,0 +1,17 @@
++"""Download the official Fashion-MNIST train/test split."""
++from pathlib import Path
++import numpy as np
++from tensorflow import keras
++
++
++def main():
++    (x_train, y_train), (x_test, y_test) = keras.datasets.fashion_mnist.load_data()
++    output = Path("data/raw")
++    output.mkdir(parents=True, exist_ok=True)
++    np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                        y_train=y_train, x_test=x_test, y_test=y_test)
++    print(f"Saved {len(y_train)} training and {len(y_test)} test images.")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/src/preprocess.py b/src/preprocess.py
+new file mode 100644
+index 0000000..9df2eed
+--- /dev/null
++++ b/src/preprocess.py
+@@ -0,0 +1,31 @@
++"""Normalize images and make a stratified validation split."""
++from pathlib import Path
++import numpy as np
++import yaml
++from sklearn.model_selection import train_test_split
++
++
++def normalize(images):
++    return images.astype(np.float32) / 255.0
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["preprocess"]
++    with np.load("data/raw/fashion_mnist.npz") as raw:
++        x_train, x_val, y_train, y_val = train_test_split(
++            normalize(raw["x_train"]), raw["y_train"],
++            test_size=params["test_size"], random_state=params["seed"],
++            stratify=raw["y_train"])
++        output = Path("data/processed")
++        output.mkdir(parents=True, exist_ok=True)
++        np.savez_compressed(output / "fashion_mnist.npz", x_train=x_train,
++                            y_train=y_train, x_val=x_val, y_val=y_val,
++                            x_test=normalize(raw["x_test"]), y_test=raw["y_test"])
++    print(f"Prepared train={len(y_train)}, validation={len(y_val)}, test=10000.")
++
++
++if __name__ == "__main__":
++    main()
++
++# Validation splitting is stratified to preserve class balance.
+diff --git a/src/train.py b/src/train.py
+new file mode 100644
+index 0000000..9b3c8e3
+--- /dev/null
++++ b/src/train.py
+@@ -0,0 +1,43 @@
++"""Train the parameterized fully connected ANN (no convolutions)."""
++import os
++os.environ.setdefault("TF_DETERMINISTIC_OPS", "1")
++os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
++import csv
++from pathlib import Path
++import numpy as np
++import tensorflow as tf
++import yaml
++
++
++def main():
++    with open("params.yaml", encoding="utf-8") as stream:
++        params = yaml.safe_load(stream)["train"]
++    tf.keras.utils.set_random_seed(params["seed"])
++    tf.config.experimental.enable_op_determinism()
++    with np.load("data/processed/fashion_mnist.npz") as data:
++        x_train, y_train = data["x_train"], data["y_train"]
++        x_val, y_val = data["x_val"], data["y_val"]
++    model = tf.keras.Sequential([
++        tf.keras.layers.Input(shape=x_train.shape[1:]),
++        tf.keras.layers.Flatten(),
++        tf.keras.layers.Dense(params["dense_units"], activation="relu"),
++        tf.keras.layers.Dropout(params["dropout_rate"]),
++        tf.keras.layers.Dense(10, activation="softmax"),
++    ])
++    model.compile(optimizer=tf.keras.optimizers.Adam(params["learning_rate"]),
++                  loss="sparse_categorical_crossentropy", metrics=["accuracy"])
++    model.summary()
++    history = model.fit(x_train, y_train, validation_data=(x_val, y_val),
++                        epochs=params["epochs"], batch_size=params["batch_size"],
++                        verbose=2)
++    Path("models").mkdir(exist_ok=True)
++    model.save("models/model.h5")
++    with open("models/history.csv", "w", newline="", encoding="utf-8") as stream:
++        writer = csv.writer(stream)
++        writer.writerow(["epoch", *history.history])
++        for i in range(len(history.epoch)):
++            writer.writerow([i + 1, *(values[i] for values in history.history.values())])
++
++
++if __name__ == "__main__":
++    main()
+
+$ git log --oneline --graph --all
+*   4f90b2b Merge README hotfix
+|\  
+| * 3c813c0 Correct Fashion-MNIST dataset spelling
+|/  
+| * 333e2d4 Clarify validation split after resuming stashed edit
+| * f62cc99 Remove obsolete scratch file with git rm
+| * 615df0e Reorganize independent pipeline scripts with git mv
+| * 1fe31cb Add temporary scratch file for repository exercise
+| * 7e46a0b Implement test metrics and confusion matrix evaluation
+| * 8a96655 Implement configurable TensorFlow ANN training and history
+| * e22bbe5 Implement normalization and stratified validation split
+| * 42a6343 Implement official Fashion-MNIST data download
+| * 696c319 Define reproducible hyperparameters and environment requirements
+|/  
+* 7c539e1 Initialize project README and artifact credential ignores
+
+$ git checkout dev
+Switched to branch 'dev'
+
+$ git rebase main
+Rebasing (1/9)
+Rebasing (2/9)
+Rebasing (3/9)
+Rebasing (4/9)
+Rebasing (5/9)
+Rebasing (6/9)
+Rebasing (7/9)
+Rebasing (8/9)
+Rebasing (9/9)
+Successfully rebased and updated refs/heads/dev.
+
+$ git log --oneline --graph --all
+* 57f5628 Clarify validation split after resuming stashed edit
+* fa6a5f5 Remove obsolete scratch file with git rm
+* 273b53b Reorganize independent pipeline scripts with git mv
+* 261cc0c Add temporary scratch file for repository exercise
+* 412ed62 Implement test metrics and confusion matrix evaluation
+* 562c51b Implement configurable TensorFlow ANN training and history
+* 7aaf3fc Implement normalization and stratified validation split
+* bfc8fee Implement official Fashion-MNIST data download
+* 2d216b9 Define reproducible hyperparameters and environment requirements
+*   4f90b2b Merge README hotfix
+|\  
+| * 3c813c0 Correct Fashion-MNIST dataset spelling
+|/  
+* 7c539e1 Initialize project README and artifact credential ignores
+
+$ git checkout -b scratch-reset
+Switched to a new branch 'scratch-reset'
+
+$ git add reset-demo.txt
+
+$ git commit -m Scratch first throwaway commit
+[scratch-reset 8136306] Scratch first throwaway commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 reset-demo.txt
+
+$ git branch evidence-reset-soft
+
+$ git reset --soft HEAD~1
+
+$ git status --short
+A  reset-demo.txt
+
+$ git diff --staged
+diff --git a/reset-demo.txt b/reset-demo.txt
+new file mode 100644
+index 0000000..053b618
+--- /dev/null
++++ b/reset-demo.txt
+@@ -0,0 +1 @@
++First throwaway change.
+
+$ git add reset-demo.txt
+
+$ git commit -m Scratch second throwaway commit
+[scratch-reset 61c4c90] Scratch second throwaway commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 reset-demo.txt
+
+$ git branch evidence-reset-hard
+
+$ git reset --hard HEAD~1
+HEAD is now at 57f5628 Clarify validation split after resuming stashed edit
+
+$ git status --short
+
+$ git checkout dev
+Switched to branch 'dev'
+

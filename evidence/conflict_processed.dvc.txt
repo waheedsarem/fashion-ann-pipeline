@@ -1,0 +1,11 @@
+outs:
+<<<<<<< HEAD
+- md5: bcf5d68187d28f74ec911362d581f6e5.dir
+  size: 47446101
+=======
+- md5: 587def07d8f546a8cc229ad88c0cad07.dir
+  size: 50778235
+>>>>>>> teammate-sim
+  nfiles: 1
+  hash: md5
+  path: processed

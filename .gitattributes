@@ -1,0 +1,4 @@
+*.pdf binary
+*.png binary
+# Preserve captured terminal output verbatim, including whitespace and CRLF.
+evidence/*.txt -text -whitespace

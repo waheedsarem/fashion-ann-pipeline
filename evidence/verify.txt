@@ -1,0 +1,161 @@
+$ python verify_pipeline.py
+PASS: data shapes/range, labels, ANN topology, history, metrics and >=85% accuracy
+{
+  "test_loss": 0.3400859236717224,
+  "test_accuracy": 0.8843,
+  "test_samples": 10000
+}
+[exit 0]
+
+$ python -m pip check
+No broken requirements found.
+[exit 0]
+
+$ dvc metrics diff pipeline-v1 v2
+Path          Metric         pipeline-v1    v2       Change
+metrics.json  test_accuracy  0.8837         0.8843   0.0006
+metrics.json  test_loss      0.3373         0.34009  0.00279
+[exit 0]
+
+$ dvc status
+Data and pipelines are up to date.
+[exit 0]
+
+$ git diff --check
+README.md:5: trailing whitespace.
++The project trains a fully connected ANN on Fashion-MNIST and versions raw data,
+README.md:6: trailing whitespace.
++processed data, models and evaluation outputs. Run the entire pipeline with
+README.md:7: trailing whitespace.
++`dvc repro` from the repository root in an activated Python environment.
+README.md:8: trailing whitespace.
++
+README.md:9: trailing whitespace.
++| Version | Hidden units | Test accuracy | Test loss |
+README.md:10: trailing whitespace.
++| --- | ---: | ---: | ---: |
+README.md:11: trailing whitespace.
++| v1 | 128 | 88.37% | 0.337296 |
+README.md:12: trailing whitespace.
++| v2 | 256 | 88.43% | 0.340086 |
+README.md:13: trailing whitespace.
++
+README.md:14: trailing whitespace.
++Both runs exceed the assignment's 85% target on the official 10,000-image test
+README.md:15: trailing whitespace.
++set. The small accuracy increase is 0.06 percentage points; test loss increased,
+README.md:16: trailing whitespace.
++so v2 is not uniformly better. All other hyperparameters stay fixed.
+README.md:17: trailing whitespace.
++
+README.md:18: trailing whitespace.
++## Run
+README.md:19: trailing whitespace.
++
+README.md:20: trailing whitespace.
++```powershell
+README.md:21: trailing whitespace.
++python -m venv .venv
+README.md:22: trailing whitespace.
++.\.venv\Scripts\Activate.ps1
+README.md:23: trailing whitespace.
++python -m pip install -r requirements-lock.txt
+README.md:24: trailing whitespace.
++dvc repro
+README.md:25: trailing whitespace.
++python verify_pipeline.py
+README.md:26: trailing whitespace.
++```
+README.md:27: trailing whitespace.
++
+README.md:28: trailing whitespace.
++See [setup and history notes](README_SETUP.md) for standalone commands, remote
+README.md:29: trailing whitespace.
++configuration and the rationale for migrating `.dvc` pointers to pipeline outputs.
+README.md:30: trailing whitespace.
++The four-page report is in [submission/Assignment3_Report.pdf](submission/Assignment3_Report.pdf).
+README.md:31: trailing whitespace.
++Full captured command outputs are under [evidence/](evidence/).
+README.md:32: trailing whitespace.
++
+README.md:33: trailing whitespace.
++## Google Drive status
+README.md:34: trailing whitespace.
++
+README.md:35: trailing whitespace.
++The default DVC remote points to the owner's
+README.md:36: trailing whitespace.
++[assignment folder](https://drive.google.com/drive/folders/1CyzpWYpPv1X9WWP3KqPLF5u6l7nkH6be).
+README.md:37: trailing whitespace.
++Google blocked the default DVC OAuth application during authentication. Remote
+README.md:38: trailing whitespace.
++upload and browser verification are pending a working personal OAuth client.
+README.md:39: trailing whitespace.
++All generated versions are retained in the local DVC cache. After authentication,
+README.md:40: trailing whitespace.
++run `dvc push --all-branches --all-tags`; do not claim remote backup until it succeeds.
+README.md:41: trailing whitespace.
++
+README.md:42: trailing whitespace.
++## Pipeline
+README.md:43: trailing whitespace.
++
+README.md:44: trailing whitespace.
++`prepare -> preprocess -> train -> evaluate`
+README.md:45: trailing whitespace.
++
+README.md:46: trailing whitespace.
++The preprocessing split is stratified: 48,000 training, 12,000 validation and
+README.md:47: trailing whitespace.
++10,000 test examples. Architecture: Flatten, Dense(ReLU), Dropout, Dense(10,
+README.md:48: trailing whitespace.
++Softmax). Training uses Adam and sparse categorical cross-entropy for 20 epochs.
+README.md:49: trailing whitespace.
++Changing only `train.dense_units` reruns train and evaluate, while DVC skips the
+README.md:50: trailing whitespace.
++unchanged prepare and preprocess stages.
+README.md:51: trailing whitespace.
++
+README.md:52: trailing whitespace.
++Code and Git-readable metrics are committed to Git. Data, HDF5 models, training
+README.md:53: trailing whitespace.
++history and the reports directory are cached by DVC; no credentials are tracked.
+[exit 2]
+
+$ python verify_pipeline.py
+PASS: data shapes/range, labels, ANN topology, history, metrics and >=85% accuracy
+{
+  "test_loss": 0.3400859236717224,
+  "test_accuracy": 0.8843,
+  "test_samples": 10000
+}
+[exit 0]
+
+$ python -m pip check
+No broken requirements found.
+[exit 0]
+
+$ dvc metrics diff pipeline-v1 v2
+Path          Metric         pipeline-v1    v2       Change
+metrics.json  test_accuracy  0.8837         0.8843   0.0006
+metrics.json  test_loss      0.3373         0.34009  0.00279
+[exit 0]
+
+$ dvc status
+Data and pipelines are up to date.
+[exit 0]
+
+$ git diff --check
+[exit 0]
+
+$ git check-ignore .dvc/config.local .dvc/cache/example credentials.json .secrets/example.json models/model.h5
+.dvc/config.local
+.dvc/cache/example
+credentials.json
+.secrets/example.json
+models/model.h5
+[exit 0]
+
+$ git tag normalization-centered 2e41775
+[exit 0]
+

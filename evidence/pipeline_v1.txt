@@ -1,0 +1,137 @@
+$ git checkout dev
+Switched to branch 'dev'
+[exit 0]
+
+$ git merge main -m Integrate resolved normalization before pipeline migration
+Updating d759b64..37c48fe
+Fast-forward (no commit created; -m option ignored)
+ src/preprocess.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[exit 0]
+
+$ dvc remove data/raw.dvc data/processed.dvc models.dvc reports.dvc
+[exit 0]
+
+$ git add -u
+[exit 0]
+
+$ git add dvc.yaml
+[exit 0]
+
+$ git commit -m Migrate standalone pointers to four-stage reproducible DVC pipeline
+[dev 2493082] Migrate standalone pointers to four-stage reproducible DVC pipeline
+ 7 files changed, 57 insertions(+), 43 deletions(-)
+ delete mode 100644 data/.gitignore
+ delete mode 100644 data/processed.dvc
+ delete mode 100644 data/raw.dvc
+ create mode 100644 dvc.yaml
+ delete mode 100644 models.dvc
+ delete mode 100644 reports.dvc
+[exit 0]
+
+$ dvc repro
+Running stage 'prepare':
+> python src/prepare.py
+Saved 60000 training and 10000 test images.
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+Running stage 'preprocess':
+> python src/preprocess.py
+Prepared train=48000, validation=12000, test=10000.
+Updating lock file 'dvc.lock'
+
+Running stage 'train':
+> python src/train.py
+Model: "sequential"
+┌─────────────────────────────────┬────────────────────────┬───────────────┐
+│ Layer (type)                    │ Output Shape           │       Param # │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 784)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 128)            │       100,480 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 128)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 10)             │         1,290 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 101,770 (397.54 KB)
+ Trainable params: 101,770 (397.54 KB)
+ Non-trainable params: 0 (0.00 B)
+Epoch 1/20
+2026-10-03 13:02:37.391118: E tensorflow/core/framework/node_def_util.cc:680] NodeDef mentions attribute use_unbounded_threadpool which is not in the op definition: Op<name=MapDataset; signature=input_dataset:variant, other_arguments: -> handle:variant; attr=f:func; attr=Targuments:list(type),min=0; attr=output_types:list(type),min=1; attr=output_shapes:list(shape),min=1; attr=use_inter_op_parallelism:bool,default=true; attr=preserve_cardinality:bool,default=false; attr=force_synchronous:bool,default=false; attr=metadata:string,default=""> This may be expected if your graph generating binary is newer  than this binary. Unknown attributes will be ignored. NodeDef: {{node ParallelMapDatasetV2/_15}}
+375/375 - 2s - 6ms/step - accuracy: 0.7829 - loss: 0.6292 - val_accuracy: 0.8428 - val_loss: 0.4411
+Epoch 2/20
+375/375 - 1s - 3ms/step - accuracy: 0.8436 - loss: 0.4434 - val_accuracy: 0.8618 - val_loss: 0.3822
+Epoch 3/20
+375/375 - 1s - 3ms/step - accuracy: 0.8577 - loss: 0.3966 - val_accuracy: 0.8715 - val_loss: 0.3628
+Epoch 4/20
+375/375 - 1s - 3ms/step - accuracy: 0.8665 - loss: 0.3693 - val_accuracy: 0.8767 - val_loss: 0.3456
+Epoch 5/20
+375/375 - 1s - 3ms/step - accuracy: 0.8738 - loss: 0.3494 - val_accuracy: 0.8801 - val_loss: 0.3339
+Epoch 6/20
+375/375 - 1s - 3ms/step - accuracy: 0.8766 - loss: 0.3377 - val_accuracy: 0.8805 - val_loss: 0.3307
+Epoch 7/20
+375/375 - 1s - 3ms/step - accuracy: 0.8816 - loss: 0.3238 - val_accuracy: 0.8813 - val_loss: 0.3323
+Epoch 8/20
+375/375 - 1s - 3ms/step - accuracy: 0.8858 - loss: 0.3135 - val_accuracy: 0.8838 - val_loss: 0.3243
+Epoch 9/20
+375/375 - 1s - 3ms/step - accuracy: 0.8895 - loss: 0.3018 - val_accuracy: 0.8872 - val_loss: 0.3180
+Epoch 10/20
+375/375 - 1s - 3ms/step - accuracy: 0.8916 - loss: 0.2972 - val_accuracy: 0.8882 - val_loss: 0.3110
+Epoch 11/20
+375/375 - 1s - 3ms/step - accuracy: 0.8944 - loss: 0.2880 - val_accuracy: 0.8888 - val_loss: 0.3086
+Epoch 12/20
+375/375 - 1s - 3ms/step - accuracy: 0.8965 - loss: 0.2815 - val_accuracy: 0.8906 - val_loss: 0.3081
+Epoch 13/20
+375/375 - 1s - 3ms/step - accuracy: 0.8970 - loss: 0.2724 - val_accuracy: 0.8886 - val_loss: 0.3086
+Epoch 14/20
+375/375 - 1s - 3ms/step - accuracy: 0.9001 - loss: 0.2684 - val_accuracy: 0.8920 - val_loss: 0.3055
+Epoch 15/20
+375/375 - 1s - 3ms/step - accuracy: 0.9026 - loss: 0.2620 - val_accuracy: 0.8941 - val_loss: 0.3000
+Epoch 16/20
+375/375 - 1s - 3ms/step - accuracy: 0.9035 - loss: 0.2577 - val_accuracy: 0.8957 - val_loss: 0.3009
+Epoch 17/20
+375/375 - 1s - 3ms/step - accuracy: 0.9051 - loss: 0.2527 - val_accuracy: 0.8928 - val_loss: 0.3083
+Epoch 18/20
+375/375 - 1s - 3ms/step - accuracy: 0.9077 - loss: 0.2471 - val_accuracy: 0.8947 - val_loss: 0.2951
+Epoch 19/20
+375/375 - 1s - 3ms/step - accuracy: 0.9086 - loss: 0.2426 - val_accuracy: 0.8966 - val_loss: 0.2984
+Epoch 20/20
+375/375 - 1s - 3ms/step - accuracy: 0.9111 - loss: 0.2368 - val_accuracy: 0.8947 - val_loss: 0.3027
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+Updating lock file 'dvc.lock'
+
+Running stage 'evaluate':
+> python src/evaluate.py
+{
+  "test_loss": 0.337295800447464,
+  "test_accuracy": 0.8837,
+  "test_samples": 10000
+}
+
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add 'data\.gitignore' dvc.lock .gitignore
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Use `dvc push` to send your updates to remote storage.
+[exit 0]
+
+$ git add dvc.lock metrics.json .gitignore data/.gitignore
+[exit 0]
+
+$ git commit -m Record first complete four-stage pipeline execution
+[dev aa4714c] Record first complete four-stage pipeline execution
+ 3 files changed, 93 insertions(+)
+ create mode 100644 data/.gitignore
+ create mode 100644 dvc.lock
+[exit 0]
+
+$ git tag pipeline-v1
+[exit 0]
+

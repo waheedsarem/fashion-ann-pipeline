@@ -1,0 +1,72 @@
+$ dvc add data/raw data/processed models reports
+ERROR: Unable to acquire lock. Most likely another DVC process is running or was terminated abruptly. Check the page <https://dvc.org/doc/user-guide/troubleshooting#lock-issue> for other possible reasons and to learn how to resolve this.
+[exit 1]
+
+$ dvc add data/raw data/processed models reports
+
+To track the changes with git, run:
+
+	git add .gitignore 'data\.gitignore' 'data\raw.dvc' reports.dvc models.dvc 'data\processed.dvc'
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+[exit 0]
+
+$ git add .gitignore data/.gitignore data/raw.dvc data/processed.dvc models.dvc reports.dvc metrics.json
+[exit 0]
+
+$ git commit -m Track baseline data models and evaluation artifacts with DVC
+[dev d759b64] Track baseline data models and evaluation artifacts with DVC
+ 7 files changed, 33 insertions(+)
+ create mode 100644 data/.gitignore
+ create mode 100644 data/processed.dvc
+ create mode 100644 data/raw.dvc
+ create mode 100644 metrics.json
+ create mode 100644 models.dvc
+ create mode 100644 reports.dvc
+[exit 0]
+
+$ git tag v1
+[exit 0]
+
+$ git checkout main
+Switched to branch 'main'
+[exit 0]
+
+$ git merge --no-ff dev -m Merge v1 ANN and DVC artifact tracking
+Merge made by the 'ort' strategy.
+ .dvc/.gitignore    |  1 +
+ .dvc/config        |  4 ++++
+ .dvcignore         |  3 +++
+ .gitignore         |  2 ++
+ data/.gitignore    |  2 ++
+ data/processed.dvc |  6 ++++++
+ data/raw.dvc       |  6 ++++++
+ metrics.json       |  5 +++++
+ models.dvc         |  6 ++++++
+ params.yaml        | 10 ++++++++++
+ reports.dvc        |  6 ++++++
+ requirements.txt   |  9 +++++++++
+ src/evaluate.py    | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ src/prepare.py     | 17 +++++++++++++++++
+ src/preprocess.py  | 31 +++++++++++++++++++++++++++++++
+ src/train.py       | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 16 files changed, 195 insertions(+)
+ create mode 100644 .dvc/.gitignore
+ create mode 100644 .dvc/config
+ create mode 100644 .dvcignore
+ create mode 100644 data/.gitignore
+ create mode 100644 data/processed.dvc
+ create mode 100644 data/raw.dvc
+ create mode 100644 metrics.json
+ create mode 100644 models.dvc
+ create mode 100644 params.yaml
+ create mode 100644 reports.dvc
+ create mode 100644 requirements.txt
+ create mode 100644 src/evaluate.py
+ create mode 100644 src/prepare.py
+ create mode 100644 src/preprocess.py
+ create mode 100644 src/train.py
+[exit 0]
+
