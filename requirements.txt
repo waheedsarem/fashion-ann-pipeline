@@ -1,0 +1,9 @@
+tensorflow==2.20.0
+dvc[gdrive]==3.63.0
+PyYAML==6.0.3
+scikit-learn==1.9.1
+matplotlib==3.11.2
+pathspec==0.12.1
+pyOpenSSL==24.2.1
+cryptography==43.0.3
+asyncssh==2.19.0
