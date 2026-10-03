@@ -1,4 +1,4 @@
-# Fashion MNIST ANN Pipeline
+# Fashion-MNIST ANN Pipeline
 
 Assignment 3: reproducible Fashion-MNIST classification with TensorFlow, Git and DVC.
 
