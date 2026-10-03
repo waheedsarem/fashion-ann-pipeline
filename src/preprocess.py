@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 
 
 def normalize(images):
-    return (images.astype(np.float32) / 127.5) - 1.0
+    return (np.clip(images, 0, 255).astype(np.float64) / 255.0).astype(np.float32)
 
 
 def main():
