@@ -4,12 +4,14 @@ Command actually executed:
 dvc push data/raw.dvc
 
 DVC opened Google's OAuth consent URL and waited for a localhost callback.
-The account owner reported: "app is blocked".
-Authentication did not complete, and no successful Drive upload is claimed.
-The waiting DVC process was stopped to release its repository lock.
+The account owner reported OAuth error 403: access_denied. Google stated that
+the OAuth application is in Testing mode and this Google account is not an
+approved tester. Authentication did not complete, and no successful Drive
+upload is claimed. The waiting DVC process was stopped to release its lock.
 
-Required recovery: configure a personal Google Cloud Desktop OAuth client
-with the Google Drive API enabled, authenticate, then run:
+The provided Desktop client belongs to Google Cloud project
+sonorous-haven-510508-a0. Add waheedsarem@gmail.com under Google Auth Platform >
+Audience > Test users, authenticate, then run:
 dvc push --all-branches --all-tags
 
 Official documentation confirms the default DVC Google app can be blocked:

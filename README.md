@@ -32,12 +32,14 @@ Full captured command outputs are under [evidence/](evidence/).
 
 ## Google Drive status
 
-The default DVC remote points to the owner's
-[assignment folder](https://drive.google.com/drive/folders/1CyzpWYpPv1X9WWP3KqPLF5u6l7nkH6be).
-Google blocked the default DVC OAuth application during authentication. Remote
-upload and browser verification are pending a working personal OAuth client.
-All generated versions are retained in the local DVC cache. After authentication,
-run `dvc push --all-branches --all-tags`; do not claim remote backup until it succeeds.
+The default DVC remote points to the updated
+[assignment folder](https://drive.google.com/drive/folders/1WCgR7ugUC_VjKzU-36cxLQN-WfbN2n-q).
+Google currently blocks the configured OAuth app because it is in Testing mode
+and the account is not listed as a test user. The project owner must add
+`waheedsarem@gmail.com` under Google Auth Platform > Audience > Test users in
+OAuth project `sonorous-haven-510508-a0`. Sign in again after the change, then run
+`dvc push --all-branches --all-tags`. All artifact versions remain in the local
+DVC cache until that upload succeeds.
 
 ## Pipeline
 

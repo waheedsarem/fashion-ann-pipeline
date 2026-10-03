@@ -20,8 +20,8 @@ For exact dependency versions from the executed environment, use
 
 ## Google Drive
 
-The default remote is the assignment folder supplied by the owner:
-https://drive.google.com/drive/folders/1CyzpWYpPv1X9WWP3KqPLF5u6l7nkH6be
+The default remote is the updated assignment folder:
+https://drive.google.com/drive/folders/1WCgR7ugUC_VjKzU-36cxLQN-WfbN2n-q
 
 ```powershell
 dvc remote list

@@ -1,5 +1,5 @@
 {
   "github_url": "https://github.com/waheedsarem/fashion-ann-pipeline",
   "github_status": "Public repository with full unsquashed history, branches and version tags.",
-  "drive_status": "Upload is not complete. Google blocked DVC's default OAuth app, as reported by the account owner. No successful remote backup or browser screenshot is claimed. All versions remain in the local DVC cache; a personal Desktop OAuth client and a successful push are still required."
+  "drive_status": "The DVC remote was updated to the replacement folder. Upload is not complete: Google returned access_denied because the configured OAuth project is in Testing mode and waheedsarem@gmail.com is not an approved test user. Add that account under Google Auth Platform > Audience > Test users, authenticate again, run dvc push --all-branches --all-tags, and verify stored objects in Drive. All versions remain in the local DVC cache."
 }
