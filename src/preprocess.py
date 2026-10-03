@@ -27,3 +27,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Validation splitting is stratified to preserve class balance.
