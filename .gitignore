@@ -13,5 +13,3 @@ credentials*.json
 client_secrets*.json
 .secrets/
 .keras/
-/models
-/reports
